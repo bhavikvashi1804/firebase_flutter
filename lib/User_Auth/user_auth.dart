@@ -35,14 +35,14 @@ class _UserAuthState extends State<UserAuth> {
     final FirebaseUser currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
 
-    print( 'signInWithGoogle succeeded: $user');
+    print( 'signInWithGoogle succeeded: ${user.uid}');
 
 
     return user;
   }
 
-  void _signOut() {
-    googleSignIn.signOut();
+  void _signOut() async{
+    await googleSignIn.signOut();
     print("User Signed out");
   }
 
