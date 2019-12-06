@@ -1,8 +1,8 @@
 
+import 'package:firebase_wallpaper/Wallfy/fullscreen_image.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
-import '.././Wallfy/wall_screen.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 
@@ -60,6 +60,14 @@ class _WallScreenState extends State<WallScreen> {
               elevation: 8.0,
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               child: InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context)=>FullScreenImagePage(imagePath),
+                    ),
+                  );
+                },
                 child: Hero(
                   tag: imagePath,
                   child: FadeInImage(
