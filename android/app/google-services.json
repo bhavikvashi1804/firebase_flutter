@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "84324108805",
+    "firebase_url": "https://wallfy-d2ccd.firebaseio.com",
+    "project_id": "wallfy-d2ccd",
+    "storage_bucket": "wallfy-d2ccd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84324108805:android:e1d9fa521d957a5326ea6c",
+        "android_client_info": {
+          "package_name": "com.bhavik.firebase_wallpaper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84324108805-su2dqi1chb8es2cqs1q19ndc1qr35sdd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_NRQ9_yjDvgCA8jt2CUQ8lk-hZdFb7U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84324108805-su2dqi1chb8es2cqs1q19ndc1qr35sdd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
