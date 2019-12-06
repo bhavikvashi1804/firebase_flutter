@@ -29,7 +29,7 @@ class _WallScreenState extends State<WallScreen> {
 
   static final MobileAdTargetingInfo targetInfo = new MobileAdTargetingInfo(
     //testDevices: testDevice!=null?<String>[testDevice]:null,
-    testDevices: <String>[],
+    testDevices: <String>['4619A49BC0CD6021B131BEFF3764AEBB'],
     keywords: <String>['wallpapers', 'walls', 'amoled'],
     birthday: new DateTime.now(),
     childDirected: true,
@@ -44,7 +44,7 @@ class _WallScreenState extends State<WallScreen> {
 
   BannerAd createBannerAd() {
     return new BannerAd(
-        adUnitId: BannerAd.testAdUnitId,
+        adUnitId: 'ca-app-pub-6041775164300762/3469856391',
         size: AdSize.banner,
         targetingInfo: targetInfo,
         listener: (MobileAdEvent event) {
@@ -67,11 +67,14 @@ class _WallScreenState extends State<WallScreen> {
   void initState() {
     
     
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    FirebaseAdMob.instance.initialize(appId: 'ca-app-pub-6041775164300762~9957057905');
     _bannerAd=createBannerAd()..load()..show(
       anchorType: AnchorType.bottom,
       //it is used to set location of Ad
     );
+
+
+
 
 
     subscription=collectionReference.snapshots().listen((dataSnapshot){
@@ -79,6 +82,8 @@ class _WallScreenState extends State<WallScreen> {
         wallpaperList=dataSnapshot.documents;
       });
     });
+
+    //AdRequest.Builder.addTestDevice("4619A49BC0CD6021B131BEFF3764AEBB");
 
     super.initState();
   }
@@ -111,7 +116,7 @@ class _WallScreenState extends State<WallScreen> {
               child: InkWell(
                 onTap: (){
 
-                  createInterstitialAd()..load()..show();
+                  //createInterstitialAd()..load()..show();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
