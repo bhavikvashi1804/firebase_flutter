@@ -1,3 +1,4 @@
+import 'package:firebase_wallpaper/CRUD/crud.dart';
 import 'package:firebase_wallpaper/User_Auth/user_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               RaisedButton(
                 child: Text('CRUD'),
-                onPressed: null,
+                onPressed: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context)=>CrudSample(),
+                      )
+                  );
+                },
               ),
             ],
           ),
