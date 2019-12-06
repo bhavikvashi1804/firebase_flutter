@@ -1,5 +1,6 @@
 import 'package:firebase_wallpaper/CRUD/crud.dart';
 import 'package:firebase_wallpaper/User_Auth/user_auth.dart';
+import 'package:firebase_wallpaper/Wallfy/wall_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -55,6 +56,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context)=>CrudSample(),
+                      )
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text('Wallpaper App'),
+                onPressed: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context)=>WallScreen(),
                       )
                   );
                 },
