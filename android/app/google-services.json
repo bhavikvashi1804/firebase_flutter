@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "84324108805",
-    "firebase_url": "https://wallfy-d2ccd.firebaseio.com",
-    "project_id": "wallfy-d2ccd",
-    "storage_bucket": "wallfy-d2ccd.appspot.com"
+    "project_number": "629579130947",
+    "firebase_url": "https://flutterfirebase-34e3d.firebaseio.com",
+    "project_id": "flutterfirebase-34e3d",
+    "storage_bucket": "flutterfirebase-34e3d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:84324108805:android:e1d9fa521d957a5326ea6c",
+        "mobilesdk_app_id": "1:629579130947:android:2cb40652b713416c2c4cf6",
         "android_client_info": {
           "package_name": "com.bhavik.firebase_wallpaper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "84324108805-su2dqi1chb8es2cqs1q19ndc1qr35sdd.apps.googleusercontent.com",
+          "client_id": "629579130947-ithrkpt73avqbgle5gi8vsjbple9bn8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bhavik.firebase_wallpaper",
+            "certificate_hash": "c3f015551a0760da24528fdf230f9fd51f08cf2b"
+          }
+        },
+        {
+          "client_id": "629579130947-e7c0e3ke5aes6mfflo4c0vmeradsmgl8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_NRQ9_yjDvgCA8jt2CUQ8lk-hZdFb7U8"
+          "current_key": "AIzaSyDOhMtRUQz1Y9sRGGMPIj_uS0OTfCBVAt4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "84324108805-su2dqi1chb8es2cqs1q19ndc1qr35sdd.apps.googleusercontent.com",
+              "client_id": "629579130947-e7c0e3ke5aes6mfflo4c0vmeradsmgl8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
