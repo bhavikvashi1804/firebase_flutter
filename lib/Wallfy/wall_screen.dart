@@ -68,7 +68,10 @@ class _WallScreenState extends State<WallScreen> {
     
     
     FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    _bannerAd=createBannerAd()..load()..show();
+    _bannerAd=createBannerAd()..load()..show(
+      anchorType: AnchorType.bottom,
+      //it is used to set location of Ad
+    );
 
 
     subscription=collectionReference.snapshots().listen((dataSnapshot){
@@ -107,6 +110,8 @@ class _WallScreenState extends State<WallScreen> {
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               child: InkWell(
                 onTap: (){
+
+                  createInterstitialAd()..load()..show();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
