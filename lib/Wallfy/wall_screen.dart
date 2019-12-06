@@ -6,6 +6,10 @@ import 'dart:async';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 
+import 'package:firebase_admob/firebase_admob.dart';
+
+
+
 
 const String testDevice = '';
 
@@ -23,9 +27,49 @@ class _WallScreenState extends State<WallScreen> {
   StreamSubscription<QuerySnapshot> subscription;
 
 
+  static final MobileAdTargetingInfo targetInfo = new MobileAdTargetingInfo(
+    //testDevices: testDevice!=null?<String>[testDevice]:null,
+    testDevices: <String>[],
+    keywords: <String>['wallpapers', 'walls', 'amoled'],
+    birthday: new DateTime.now(),
+    childDirected: true,
+    gender: MobileAdGender.unknown,
+  );
+
+
+  BannerAd _bannerAd;
+  InterstitialAd _interstitialAd;
+
+
+
+  BannerAd createBannerAd() {
+    return new BannerAd(
+        adUnitId: BannerAd.testAdUnitId,
+        size: AdSize.banner,
+        targetingInfo: targetInfo,
+        listener: (MobileAdEvent event) {
+          print("Banner event : $event");
+        });
+  }
+
+  InterstitialAd createInterstitialAd() {
+    return new InterstitialAd(
+        adUnitId: InterstitialAd.testAdUnitId,
+        targetingInfo: targetInfo,
+        listener: (MobileAdEvent event) {
+          print("Interstitial event : $event");
+        });
+  }
+
+
 
   @override
   void initState() {
+    
+    
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    _bannerAd=createBannerAd()..load()..show();
+
 
     subscription=collectionReference.snapshots().listen((dataSnapshot){
       setState(() {
@@ -39,6 +83,8 @@ class _WallScreenState extends State<WallScreen> {
 
   @override
   void dispose() {
+    _bannerAd?.dispose();
+    _interstitialAd.dispose();
     subscription?.cancel();
     //subscription if not null then dispose it
     super.dispose();
