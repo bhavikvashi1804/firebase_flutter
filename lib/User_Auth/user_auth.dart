@@ -47,6 +47,11 @@ class _UserAuthState extends State<UserAuth> {
   }
 
 
+
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
