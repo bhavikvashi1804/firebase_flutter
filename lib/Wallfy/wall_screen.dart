@@ -10,10 +10,20 @@ import 'package:firebase_admob/firebase_admob.dart';
 
 
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+
+
+
 
 const String testDevice = '';
 
 class WallScreen extends StatefulWidget {
+  final FirebaseAnalytics FA;
+  final FirebaseAnalyticsObserver FAO;
+
+  WallScreen(this.FA,this.FAO);
+
   @override
   _WallScreenState createState() => new _WallScreenState();
 }
@@ -29,7 +39,7 @@ class _WallScreenState extends State<WallScreen> {
 
   static final MobileAdTargetingInfo targetInfo = new MobileAdTargetingInfo(
     //testDevices: testDevice!=null?<String>[testDevice]:null,
-    testDevices: <String>['4619A49BC0CD6021B131BEFF3764AEBB'],
+    //testDevices: <String>['4619A49BC0CD6021B131BEFF3764AEBB'],
     keywords: <String>['wallpapers', 'walls', 'amoled'],
     birthday: new DateTime.now(),
     childDirected: true,
@@ -54,12 +64,28 @@ class _WallScreenState extends State<WallScreen> {
 
   InterstitialAd createInterstitialAd() {
     return new InterstitialAd(
-        adUnitId: InterstitialAd.testAdUnitId,
+        adUnitId: 'ca-app-pub-6041775164300762/2976183757',
         targetingInfo: targetInfo,
         listener: (MobileAdEvent event) {
           print("Interstitial event : $event");
         });
   }
+
+
+
+
+
+  Future<Null> _currentScreen() async {
+    await widget.FA.setCurrentScreen(
+        screenName: 'Wall Screen', screenClassOverride: 'WallScreen');
+  }
+
+  Future<Null> _sendAnalytics() async {
+    await widget.FA
+        .logEvent(name: 'full_screen_tapped', parameters: <String, dynamic>{});
+  }
+
+
 
 
 
@@ -85,6 +111,9 @@ class _WallScreenState extends State<WallScreen> {
 
     //AdRequest.Builder.addTestDevice("4619A49BC0CD6021B131BEFF3764AEBB");
 
+
+    //_currentScreen();
+
     super.initState();
   }
 
@@ -92,7 +121,7 @@ class _WallScreenState extends State<WallScreen> {
   @override
   void dispose() {
     _bannerAd?.dispose();
-    _interstitialAd.dispose();
+    _interstitialAd?.dispose();
     subscription?.cancel();
     //subscription if not null then dispose it
     super.dispose();
@@ -115,8 +144,8 @@ class _WallScreenState extends State<WallScreen> {
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               child: InkWell(
                 onTap: (){
-
-                  //createInterstitialAd()..load()..show();
+                  _sendAnalytics();
+                  createInterstitialAd()..load()..show();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

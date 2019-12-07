@@ -3,10 +3,19 @@ import 'package:firebase_wallpaper/User_Auth/user_auth.dart';
 import 'package:firebase_wallpaper/Wallfy/wall_screen.dart';
 import 'package:flutter/material.dart';
 
+
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+  static FirebaseAnalytics analytics=FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer=FirebaseAnalyticsObserver(
+    analytics: analytics,
+  );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,20 +24,30 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter & Flutter'),
+      navigatorObservers: <NavigatorObserver>[observer],
+      home: MyHomePage( 'Flutter & Flutter',analytics,observer),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+
   final String title;
+
+  final FirebaseAnalytics FA;
+  final FirebaseAnalyticsObserver FAO;
+
+  MyHomePage(this.title,this.FA,this.FAO);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context)=>WallScreen(),
+                        builder: (context)=>WallScreen(widget.FA,widget.FAO),
                       )
                   );
                 },
